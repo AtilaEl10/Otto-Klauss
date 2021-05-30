@@ -36,7 +36,10 @@ export default {
             this.editarProducto(juguete)
         },
         borrar(juguete){
-            this.borrarProducto(juguete)
+            const result = confirm("Seguro que quieres eliminar el producto?")
+            if(result === true) {
+                this.borrarProducto(juguete)
+            }
         },
         ...mapActions(["borrarProducto"]),
         ...mapMutations(["activarEdicion", "editarProducto"]),

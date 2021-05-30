@@ -38,10 +38,13 @@ export default {
     methods: {
         ...mapActions(["agregarNuevoJuguete"]),
         agregar() {
-            const juguete = this.juguete
-            if(!juguete.codigo || !juguete.nombre || !juguete.stock || !juguete.precio) return;
-            this.agregarNuevoJuguete(juguete)
-            alert("el producto ha sido agregado, revisa el catalogo para comprobar su existencia")
+            const result = confirm("Seguro que quieres agregar el item?")
+            if(result === true) {
+                const juguete = this.juguete
+                if(!juguete.codigo || !juguete.nombre || !juguete.stock || !juguete.precio) return;
+                this.agregarNuevoJuguete(juguete)
+                alert("el producto ha sido agregado, revisa el catalogo para comprobar su existencia")
+            }
         }
     },
 }
