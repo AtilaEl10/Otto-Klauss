@@ -20,7 +20,13 @@ export default new Vuex.Store({
       const juguete = payload
       if (!juguete) return
       state.productos.push(juguete)
-    }
+    },
+    eliminarProducto(state, payload){
+      const juguete = payload;
+      if(!juguete) return
+      const index = state.productos.indexOf(juguete)
+      state.productos.splice(index, 1)
+    },
   },
 
   actions: {
@@ -39,6 +45,15 @@ export default new Vuex.Store({
       } catch (error) {
         console.log("Error en la obtencion de la Data de Firebase", error);
       }
+    },
+    async borrarProducto({commit}, payload) {
+      // Se borra de Firebase
+      const juguete = payload;
+      if(!juguete) return
+      // const idFirebase = juguete.id
+
+      commit("eliminarProducto", juguete)
     }
+
   },
 });

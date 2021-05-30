@@ -1,26 +1,27 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-            <div class="container-fluid">
-                <router-link class="navbar-brand text-warning fw-bold" to="/">Otto Klauss</router-link>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/">Inicio</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/editar">Editar</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/agregar">Agregar</router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <b-navbar class="navbar-dark bg-dark px-5" toggleable="sm">
+
+            <b-navbar-brand>
+                <router-link class="text-warning fw-bold" to="/">Otto Klauss</router-link>
+            </b-navbar-brand>
+
+            <b-collapse id="nav-text-collapse" is-nav>
+            <b-navbar-nav class="ms-auto">
+                <b-nav-text>
+                    <router-link class="nav-link" to="/">Inicio</router-link>
+                </b-nav-text>
+                <b-nav-text>
+                    <router-link class="nav-link" to="/editar">Editar</router-link>
+                </b-nav-text>
+                <b-nav-text>
+                    <router-link class="nav-link" to="/agregar">Agregar</router-link>
+                </b-nav-text>
+            </b-navbar-nav>
+            </b-collapse>
+            
+            <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+        </b-navbar>
     </div>
 </template>
 
