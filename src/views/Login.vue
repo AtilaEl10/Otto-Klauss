@@ -2,7 +2,7 @@
     <div>
         <b-container>
             <b-row  style="height: 100vh">
-                <b-col cols="12" md="6" class="m-auto border rounded-2 p-5 shadow">
+                <b-col cols="12" md="6" class="m-auto border rounded-2 p-5 shadow bg-light">
                     <h2 class="fw-bold">Ingresar</h2>
                     <b-form-group label="Correo electrónico:" description="Introduzca su correo" class="fw-bold text-start mt-4">
                         <b-form-input v-model="form.email" type="email" placeholder="Correo Electrónico" required></b-form-input>
@@ -42,7 +42,11 @@ export default {
                 const request = await firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.pass)
                 // if(request && request !== null) this.$router.push("/home")
                 console.log(request);
-                if(request && request !== null) localStorage.setItem("login", "logueado")
+                if(request && request !== null) {
+                    localStorage.setItem("login", "logueado")
+                    this.$router.push("/")
+                }
+
 
             } catch (error) {
                 const errorCode = error.code;

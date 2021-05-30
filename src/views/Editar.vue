@@ -4,7 +4,7 @@
     <b-container>
       <b-row style="height: 100vh">
         <b-col>
-          <h2 class="my-5">Editar o Eliminar Productos</h2>
+          <h2 class="my-5 bg-light fw-bold">Editar o Eliminar Productos</h2>
           <TablaEdit :filas="productos" :encabezados="titulos" />
         </b-col>
       </b-row>
