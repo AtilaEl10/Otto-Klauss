@@ -1,3 +1,14 @@
+Usuarios habilitados para acceder:
+
+daniel.cubillos.flores@gmail.com;
+
+gonzafg2@gmail.com;
+
+contraseña numérica de 6 digitos ;)
+
+
+
+
 # ottoklauss
 
 ## Project setup
