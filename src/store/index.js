@@ -40,6 +40,11 @@ export default new Vuex.Store({
       const juguete = payload
       if(!juguete) return
       state.updateProducto = juguete
+    },
+
+    crearJuguete(state, payload) {
+      const repetido = state.productos.find((juguete) => juguete.id === payload.id)
+      if(!repetido) state.productos.push(payload)
     }
   },
 
@@ -82,7 +87,14 @@ export default new Vuex.Store({
         console.log("Error al actualizar el producto", error);
       }
       commit()
-    }
+    },
+    async agregarNuevoJuguete({commit}, payload) {
+      const db = firebase.firestore()
+      const juguete = payload
+      if(!juguete) return
 
+      commit("crearJuguete", juguete)
+      await db.collection("juguetes").add(juguete)
+    }
   },
 });
