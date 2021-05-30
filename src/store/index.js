@@ -13,6 +13,12 @@ export default new Vuex.Store({
       { label: "Stock", key: "stock" },
       { label: "Precio", key: "precio" },
     ],
+    editar: false, //para desplegar formulario de edicion de prodctos
+    updateProducto: {
+      nombre: "",
+      stock: 0,
+      precio: 0,
+    }
   },
 
   mutations: {
@@ -27,6 +33,14 @@ export default new Vuex.Store({
       const index = state.productos.indexOf(juguete)
       state.productos.splice(index, 1)
     },
+    activarEdicion(state) {
+      state.editar = true
+    },
+    editarProducto(state, payload) {
+      const juguete = payload
+      if(!juguete) return
+      state.updateProducto = juguete
+    }
   },
 
   actions: {
@@ -50,9 +64,24 @@ export default new Vuex.Store({
       // Se borra de Firebase
       const juguete = payload;
       if(!juguete) return
-      // const idFirebase = juguete.id
-
+      
       commit("eliminarProducto", juguete)
+    },
+    async actualizarProducto({commit}, payload) {
+      const juguete = payload
+      if(!juguete) return
+      const idFirebase = juguete.id
+      try {
+        const request = await firebase.firestore().collection("juguetes").doc(idFirebase).update({
+          stock: juguete.stock,
+          nombre: juguete.nombre,
+          precio: juguete.precio
+        })
+        console.log(request);
+      } catch (error) {
+        console.log("Error al actualizar el producto", error);
+      }
+      commit()
     }
 
   },

@@ -17,6 +17,12 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/Editar.vue"),
   },
   {
+    path: "/agregar",
+    name: "Agregar",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/Agregar.vue"),
+  },
+  {
     path: "/login",
     name: "Login",
     component: () =>

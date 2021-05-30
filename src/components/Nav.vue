@@ -17,6 +17,9 @@
                 <b-nav-text>
                     <router-link class="nav-link" to="/agregar">Agregar</router-link>
                 </b-nav-text>
+                <b-nav-text>
+                    <router-link class="nav-link" to="/">Logout</router-link>
+                </b-nav-text>
             </b-navbar-nav>
             </b-collapse>
             

@@ -4,7 +4,7 @@
     <b-container>
       <b-row style="height: 100vh">
         <b-col>
-          <h1 class="my-5">Editar o Eliminar Productos</h1>
+          <h2 class="my-5">Editar o Eliminar Productos</h2>
           <TablaEdit :filas="productos" :encabezados="titulos" />
         </b-col>
       </b-row>
@@ -24,7 +24,7 @@ export default {
   
   components: {
     TablaEdit,
-    Nav
+    Nav,
   },
   computed: {
     ...mapState(["productos", "titulos"])

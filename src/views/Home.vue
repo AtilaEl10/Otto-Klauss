@@ -4,7 +4,7 @@
     <b-container>
       <b-row style="height: 100vh">
         <b-col>
-          <h1 class="my-5">Tabla de datos</h1>
+          <h2 class="my-5">Tabla de datos</h2>
           <Tabla :filas="productos" :encabezados="titulos" />
         </b-col>
       </b-row>

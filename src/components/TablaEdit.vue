@@ -6,15 +6,20 @@
                 <b-button @click="borrar(row.item)" size="sm" class="my-1" variant="danger">Eliminar</b-button>
             </template>
         </b-table>
+        <EditForm />
     </div>
 </template>
 
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
+import EditForm from "@/components/EditForm.vue"
 
 export default {
     name: "TablaEdit",
+    components: {
+        EditForm,
+    },
     props:{
         filas: {
             type: Array
@@ -24,13 +29,15 @@ export default {
         },
     },
     methods: {
-        editar() {
-            
+        editar(juguete) {
+            this.activarEdicion()
+            this.editarProducto(juguete)
         },
         borrar(juguete){
             this.borrarProducto(juguete)
         },
-        ...mapActions(["borrarProducto"])
+        ...mapActions(["borrarProducto"]),
+        ...mapMutations(["activarEdicion", "editarProducto"]),
     },
 }
 </script>
