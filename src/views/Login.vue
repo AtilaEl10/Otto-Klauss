@@ -39,9 +39,7 @@ export default {
              console.log(this.form.email);
              console.log(this.form.pass);
             try {
-                console.log("hola");
                 const request = await firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.pass)
-                console.log("Hola de neuvo");
                 // if(request && request !== null) this.$router.push("/home")
                 console.log(request);
                 if(request && request !== null) localStorage.setItem("login", "logueado")

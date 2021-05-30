@@ -7,23 +7,24 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+//Firebase
+import firebase from "firebase"
+import { firebaseConfig } from "../firebase"
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-//Firebase
-import firebase from "firebase"
-import { firebaseConfig } from "../firebase"
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated= localStorage.getItem("login")
+
   console.log(isAuthenticated);
-  if(to.name !== "Login" && !isAuthenticated !== "logueado") next({name: "Login"});
+  if(to.name !== "Login" && isAuthenticated !== "logueado") next({ name: "Login" });
+  else if(to.name === "Login" && isAuthenticated === "logueado") next({ name: "Home" });
   else next();
 });
 
